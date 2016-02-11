@@ -1,0 +1,5 @@
+analysis_id,data_export_id,pipeline_id,project_id,container_export_id,comment_,used_
+chemoCLim01,export_dataStage02QuantificationDescriptiveStats_js,quantification,chemoCLim01,,,TRUE
+chemoCLim01,export_dataStage02QuantificationHeatmap_js,quantification,chemoCLim01,,,TRUE
+chemoCLim01,export_dataStage02QuantificationPairWiseTest_js,quantification,chemoCLim01,,,TRUE
+chemoCLim01,export_dataStage02QuantificationPca_js,quantification,chemoCLim01,,,TRUE
