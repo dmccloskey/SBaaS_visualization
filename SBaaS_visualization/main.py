@@ -16,7 +16,7 @@ engine = pg_orm.get_engine();
 
 # your app...
 # SBaaS paths:
-sys.path.append(pg_settings.datadir_settings['drive']+'/SBaaS_visualization')
+sys.path.append(pg_settings.datadir_settings['github']+'/SBaaS_visualization')
 # SBaaS dependencies paths:
 sys.path.append(pg_settings.datadir_settings['github']+'/io_utilities')
 sys.path.append(pg_settings.datadir_settings['github']+'/ddt_python')
