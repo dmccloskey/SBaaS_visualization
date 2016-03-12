@@ -32,14 +32,16 @@ class visualization_project(Base):
         self.comment_ = comment_I;
 
     def __repr__dict__(self):
-        return {'id':self.id,
+        return {
+            'id':self.id,
             'project_id':self.project_id,
             'pipeline_id':self.pipeline_id,
-                'analysis_id':self.analysis_id,
-                'data_export_id':self.data_export_id,
-                'container_export_id':self.container_export_id,
-                'used_':self.used_,
-                'comment_':self.comment_}
+            'analysis_id':self.analysis_id,
+            'data_export_id':self.data_export_id,
+            'container_export_id':self.container_export_id,
+            'used_':self.used_,
+            'comment_':self.comment_
+            }
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
@@ -85,16 +87,18 @@ class visualization_project_description(Base):
         self.comment_ = comment_I;
 
     def __repr__dict__(self):
-        return {'id':self.id,
+        return {
+            'id':self.id,
             'project_id':self.project_id,
-                'project_section':self.project_section,
-                'project_heading':self.project_heading,
-                'project_paragraph':self.project_paragraph,
-                'project_media':self.project_media,
-                'project_href':self.project_href,
-                'project_tileorder':self.project_tileorder,
-                'used_':self.used_,
-                'comment_':self.comment_}
+            'project_section':self.project_section,
+            'project_heading':self.project_heading,
+            'project_paragraph':self.project_paragraph,
+            'project_media':self.project_media,
+            'project_href':self.project_href,
+            'project_tileorder':self.project_tileorder,
+            'used_':self.used_,
+            'comment_':self.comment_
+            };
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
@@ -112,7 +116,12 @@ class visualization_project_status(Base):
             )
     
     def __init__(self,data_dict_I):
-        pass;
+        self.comment_=data_dict_I['comment_'];
+        self.used_=data_dict_I['used_'];
+        self.project_id=data_dict_I['project_id'];
+        self.pipeline_id=data_dict_I['pipeline_id'];
+        self.pipeline_progress=data_dict_I['pipeline_progress'];
+
     def __set__row__(self, project_id_I, pipeline_id_I,pipeline_progress_I,used_I,comment_I):
         self.project_id = project_id_I;
         self.pipeline_id = pipeline_id_I;
@@ -121,12 +130,14 @@ class visualization_project_status(Base):
         self.comment_ = comment_I;
 
     def __repr__dict__(self):
-        return {'id':self.id,
+        return {
+            'id':self.id,
             'project_id':self.project_id,
-                'pipeline_id':self.pipeline_id,
-                'pipeline_progress':self.pipeline_progress,
-                'used_':self.used_,
-                'comment_':self.comment_}
+            'pipeline_id':self.pipeline_id,
+            'pipeline_progress':self.pipeline_progress,
+            'used_':self.used_,
+            'comment_':self.comment_
+            };
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())

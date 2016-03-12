@@ -1,11 +1,10 @@
 import sys
-sys.path.append('C:/Users/dmccloskey-sbrg/Google Drive/SBaaS_base')
+sys.path.append('C:/Users/dmccloskey-sbrg/Documents/GitHub/SBaaS_base')
 from SBaaS_base.postgresql_settings import postgresql_settings
 from SBaaS_base.postgresql_orm import postgresql_orm
 
 # read in the settings file
-filename = 'C:/Users/dmccloskey-sbrg/Google Drive/SBaaS_base/settings_1.ini';
-#filename = 'C:/Users/dmccloskey-sbrg/Google Drive/SBaaS_base/settings_metabolomics.ini';
+filename = 'C:/Users/dmccloskey-sbrg/Google Drive/SBaaS_settings/settings_metabolomics.ini';
 pg_settings = postgresql_settings(filename);
 
 # connect to the database from the settings file
@@ -33,12 +32,13 @@ visproj01.initialize_tables();
 #visproj01.import_rows_table_update_csv(
 #    table_I='visualization_project',
 #    filename_I='data/tests/analysis_visualization/150905_ALEsKOs01_projectUpdate01.csv');
-visproj01.import_rows_table_reset_csv(
-    table_I='visualization_project',
-    filename_I='data/tests/analysis_visualization/150905_ALEsKOs01_projectUpdate01.csv');
+#visproj01.import_rows_table_reset_csv(
+#    table_I='visualization_project',
+#    filename_I='data/tests/analysis_visualization/150905_ALEsKOs01_projectUpdate01.csv');
 ## export the projects
 #visproj01.export_rows_tables_table_js(['visualization_project'],{'select':{'visualization_project':None}},data_dir_I='tmp');
 #visproj01.export_visualizationProject_csv(project_id_I='ALEsKOs01',filename_O='data/tests/analysis_visualization/project01.csv');
+visproj01.export_visualizationProject_js(project_id_I='ALEsKOs01');
 
 #from SBaaS_visualization.visualization_pipeline_execute import visualization_pipeline_execute
 #vispipe01 = visualization_pipeline_execute(session,engine,pg_settings.datadir_settings);

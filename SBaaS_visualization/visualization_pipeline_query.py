@@ -17,7 +17,7 @@ class visualization_pipeline_query(sbaas_template_query):
         tables_supported = {
                             'visualization_pipeline':visualization_pipeline,
                             'visualization_pipeline_description':visualization_pipeline_description,
-                            #'visualization_pipeline_status':visualization_pipeline_status,
+                            'visualization_pipeline_status':visualization_pipeline_status,
                         };
         self.set_supportedTables(tables_supported);
             

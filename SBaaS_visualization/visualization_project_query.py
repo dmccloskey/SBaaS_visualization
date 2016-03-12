@@ -16,6 +16,7 @@ class visualization_project_query(sbaas_template_query):
         '''
         tables_supported = {'visualization_project':visualization_project,
                             'visualization_project_description':visualization_project_description,
+                            'visualization_project_status':visualization_project_status,
                         };
         self.set_supportedTables(tables_supported);
 
@@ -23,7 +24,7 @@ class visualization_project_query(sbaas_template_query):
         try:
             visualization_project.__table__.drop(self.engine,True);
             visualization_project_description.__table__.drop(self.engine,True);
-            #visualization_project_status.__table__.drop(self.engine,True);
+            visualization_project_status.__table__.drop(self.engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_visualization(self,project_id_I = None):
@@ -31,10 +32,11 @@ class visualization_project_query(sbaas_template_query):
             if project_id_I:
                 reset = self.session.query(visualization_project).filter(visualization_project.project_id.like(project_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(visualization_project_description).filter(visualization_project_description.project_id.like(project_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(visualization_project_status).filter(visualization_project_status.project_id.like(project_id_I)).delete(synchronize_session=False);
             else:
                 reset = self.session.query(visualization_project).delete(synchronize_session=False);
                 reset = self.session.query(visualization_project_description).delete(synchronize_session=False);
-                #reset = self.session.query(visualization_project_status).delete(synchronize_session=False);
+                reset = self.session.query(visualization_project_status).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
@@ -42,7 +44,7 @@ class visualization_project_query(sbaas_template_query):
         try:
             visualization_project.__table__.create(self.engine,True);
             visualization_project_description.__table__.create(self.engine,True);
-            #visualization_project_status.__table__.create(self.engine,True);
+            visualization_project_status.__table__.create(self.engine,True);
         except SQLAlchemyError as e:
             print(e);
     def add_visualizationProject(self, data_I):
@@ -155,6 +157,22 @@ class visualization_project_query(sbaas_template_query):
                     'used_':d.used_,
                     'comment_':d.comment_
                     });
+            return  data_O;
+        except SQLAlchemyError as e:
+            print(e);
+
+    # query data from visualization_project_status
+    def get_rows_projectID_visualizationProjectStatus(self,project_id_I):
+        '''Query rows that are used from the project'''
+        try:
+            data = self.session.query(visualization_project_status).filter(
+                    visualization_project_status.project_id.like(project_id_I),
+                    visualization_project_status.used_.is_(True)).order_by(
+                    visualization_project_status.id.asc()).all();
+            data_O = [];
+            if data: 
+                for d in data:
+                    data_O.append(d.__repr__dict__());
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
