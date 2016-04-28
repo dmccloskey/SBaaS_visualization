@@ -27,6 +27,7 @@ class visualization_project_query(sbaas_template_query):
             visualization_project_status.__table__.drop(self.engine,True);
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
     def reset_visualization(self,project_id_I = None):
         try:
             if project_id_I:
@@ -40,6 +41,7 @@ class visualization_project_query(sbaas_template_query):
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
     def initialize_visualization(self):
         try:
             visualization_project.__table__.create(self.engine,True);
@@ -47,6 +49,7 @@ class visualization_project_query(sbaas_template_query):
             visualization_project_status.__table__.create(self.engine,True);
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
     def add_visualizationProject(self, data_I):
         '''add rows of visualization_project'''
         if data_I:
@@ -113,6 +116,7 @@ class visualization_project_query(sbaas_template_query):
             return project_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
     def get_rows_projectID_visualizationProject(self,project_id_I):
         '''Query rows that are used from the project'''
         try:
@@ -135,6 +139,7 @@ class visualization_project_query(sbaas_template_query):
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
 
     # query data from visualization_project_description
     def get_rows_projectID_visualizationProjectDescription(self,project_id_I):
@@ -160,6 +165,7 @@ class visualization_project_query(sbaas_template_query):
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
 
     # query data from visualization_project_status
     def get_rows_projectID_visualizationProjectStatus(self,project_id_I):
@@ -176,3 +182,4 @@ class visualization_project_query(sbaas_template_query):
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()

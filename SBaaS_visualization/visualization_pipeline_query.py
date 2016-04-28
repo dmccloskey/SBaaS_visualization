@@ -54,6 +54,7 @@ class visualization_pipeline_query(sbaas_template_query):
             return pipeline_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
     def get_rows_pipelineID_visualizationPipeline(self,pipeline_id_I):
         '''Query rows that are used from the pipeline'''
         try:
@@ -70,6 +71,7 @@ class visualization_pipeline_query(sbaas_template_query):
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()
 
     # query data from visualization_pipeline_description
     def get_rows_pipelineID_visualizationPipelineDescription(self,pipeline_id_I):
@@ -95,3 +97,4 @@ class visualization_pipeline_query(sbaas_template_query):
             return  data_O;
         except SQLAlchemyError as e:
             print(e);
+            self.session.rollback()

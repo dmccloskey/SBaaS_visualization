@@ -54,6 +54,7 @@ class visualization_role_query(sbaas_template_query):
                     data_O=d.__repr__dict__();
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_row_roleName_visualizationRole(self,role_name_I):
@@ -86,6 +87,7 @@ class visualization_role_query(sbaas_template_query):
                     data_O=d.__repr__dict__();
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_rows_roleName_visualizationRoleAttributes(self,role_name_I):
@@ -107,6 +109,7 @@ class visualization_role_query(sbaas_template_query):
                     data_O.append(d.__repr__dict__());
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_roleAttributes_roleName_visualizationRoleAttributes(self,role_name_I):
@@ -149,6 +152,7 @@ class visualization_role_query(sbaas_template_query):
                     data_O.append(d.__repr__dict__());
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_rolePrivileges_roleName_visualizationRolePrivileges(self,role_name_I):
@@ -170,6 +174,7 @@ class visualization_role_query(sbaas_template_query):
                     data_O.append(d.privilege_type);
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
    

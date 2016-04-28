@@ -61,6 +61,7 @@ class visualization_user_query(sbaas_template_query):
                     data_O['user_password']=d.user_password;
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_rows_userName_visualizationUserProjects(self,user_name_I):
@@ -82,6 +83,7 @@ class visualization_user_query(sbaas_template_query):
                     data_O.append=d.__repr__dict__();
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
     def get_projectIDs_userName_visualizationUserProjects(self,user_name_I):
         '''Query rows from visualization_user_projects
@@ -102,6 +104,7 @@ class visualization_user_query(sbaas_template_query):
                     data_O.append(d.project_id);
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_rows_userName_visualizationUserPipelines(self,user_name_I):
@@ -123,6 +126,7 @@ class visualization_user_query(sbaas_template_query):
                     data_O.append(d.__repr__dict__());
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
     def get_pipelineIDs_userName_visualizationUserPipelines(self,user_name_I):
@@ -144,6 +148,7 @@ class visualization_user_query(sbaas_template_query):
                     data_O.append(d.pipeline_id);
         except Exception as e:
             print(e);
+            self.session.rollback()
         return data_O;
 
    
